@@ -23,14 +23,15 @@ export const EveriaDownloader = () => {
         {setTabTitle("Everia Downloader", "Paste the URL for Everia gallery that you want to download")}
         <h1 className='page-title' style={{color:'indigo'}}>Everia Downloader</h1>
         <div className='flex-vertical flex-just-center content-fill-100'>
-        {isLoading || isFetching && 
-        <div className=' flex-vertical flex-align-center flex-just-center'style={{width:'100%'}}> 
-          <CircleLoader color='indigo'/>
-          Downloading Files...
-        </div>}
+        
         <input type={'text'} onPaste={handlePaste} value={url} onChange={obj => setURL(obj.currentTarget.value) } placeholder={'Enter URL here...'}/>
         <button className='dwl-btn' onClick={handleSearch} disabled={isLoading||isFetching}>
-          <FontAwesomeIcon color='indigo' icon={faDownload}/>
+          {isLoading || isFetching ? 
+            <div className=' flex-align-center flex-just-center'style={{width:'100%'}}> 
+              <CircleLoader color='indigo' size={18}/>
+            </div>:
+            <FontAwesomeIcon color='indigo' icon={faDownload}/>
+          }
         </button>
        {/* {data  && <h4>{data?.msg}</h4>} */}
       </div>

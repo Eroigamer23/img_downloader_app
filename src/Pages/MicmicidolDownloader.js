@@ -23,14 +23,15 @@ export const MicmicidolDownloader = () => {
         {setTabTitle("Micmicidol Downloader", "Paste the URL for Micmicidol gallery that you want to download")}
         <h1 className='page-title' style={{color:'maroon'}}>Micmicidol Downloader</h1>
         <div className='flex-vertical flex-just-center content-fill-100'>
-        {isLoading || isFetching && 
-        <div className=' flex-vertical flex-align-center flex-just-center'style={{width:'100%'}}> 
-          <CircleLoader color='maroon'/>
-          Downloading Files...
-        </div>}
+        
         <input type={'text'} onPaste={handlePaste} value={url} onChange={obj => setURL(obj.currentTarget.value) } placeholder={'Enter URL here...'}/>
         <button className='dwl-btn' onClick={handleSearch} disabled={isLoading||isFetching}>
-          <FontAwesomeIcon color='maroon' icon={faDownload}/>
+          {isLoading || isFetching ? 
+            <div className=' flex-align-center flex-just-center'style={{width:'100%'}}> 
+              <CircleLoader color='maroon' size={18}/>
+            </div>:
+            <FontAwesomeIcon color='maroon' icon={faDownload}/>
+          }
         </button>
        {/* {data  && <h4>{data?.msg}</h4>} */}
       </div>
